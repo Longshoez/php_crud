@@ -25,8 +25,9 @@
 
     #Read -> GET POSTS
     #Access the reslusts and pass them to the query variable    
-    $sql = "SELECT * FROM blog_entry"; //Select all from table xxxxx
-    $query = mysqli_query($conn, $sql); 
+    #$sql = "SELECT * FROM blog_entry"; //Select all from table xxxxx
+    $sql = "SELECT * FROM blog_entry ORDER BY id DESC"; //Select all from table xxxxx  but display it reversed since the last post uploaded will be the first one to appear on the website  
+    $query = mysqli_query($conn, $sql);
 
     #GET "view more" post
     if(isset($_REQUEST['id'])){

@@ -14,11 +14,35 @@
 <body>
     <?php include "./Components/navbar.php" ?>
     <div class="container mt-5">
+
+        <?php if (isset($_REQUEST['info'])) { ?>
+            <?php if ($_REQUEST['info'] == 'post_added') { ?>
+                <div class="alert alert-success" data-dismiss="alert" role="alert">
+                    New post added
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            <?php } else if ($_REQUEST['info'] == 'post_updated') { ?>
+                <div class="alert alert-success" data-dismiss="alert" role="alert">
+                    Post updated
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            <?php } else if ($_REQUEST['info'] == 'post_deleted') { ?>
+                <div class="alert alert-danger" data-dismiss="alert" role="alert">
+                    Post deleted
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            <?php } ?>
+        <?php } ?>
+
         <!-- Get all posts with a for-each -->
+        <div class="alert alert-primary" data-dismiss="alert" role="alert">
+            Blog preview (click here to dismiss this message)
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        </div>
         <div class="row">
             <?php foreach ($query as $q) { ?>
                 <div class="col-4 d-flex justify-content-center align-items-center">
-                    <div class="card shadow text-white bg-dark mb-4">
+                    <div class="card text-white bg-dark mb-4">
                         <div class="card-body style=" width: 18rem;">
                             <h5 class="card-title"> <?php echo $q['title'] ?> </h5>
                             <p class="card-text"> <?php echo substr($q['content'], 0, 50)?>... </p>
